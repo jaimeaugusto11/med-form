@@ -71,7 +71,13 @@ export default function Home() {
   return (
     <div className="font-sans grid grid-rows-[auto_1fr_auto] items-center justify-items-center min-h-screen p-1 pb-20 gap-16 sm:p-20">
       <main className="w-full max-w-xl">
-        <Image src="/logo.webp" alt="Logo" height={80} width={80} className="pb-10" />
+        <Image
+          src="/logo.webp"
+          alt="Logo"
+          height={80}
+          width={80}
+          className="pb-10"
+        />
 
         {loading && <p>Carregando colaborador...</p>}
         {error && <p className="text-red-600">{error}</p>}
@@ -113,6 +119,8 @@ export default function Home() {
 
               if (response.ok) {
                 alert("Resposta enviada com sucesso!");
+                setIsAvailable(true);
+                setDescricao("");
               } else {
                 alert("Erro ao enviar. Tente novamente.");
               }
@@ -123,7 +131,10 @@ export default function Home() {
           }}
         >
           <div className="sm:col-span-4">
-            <label htmlFor="colaborador" className="block text-sm font-medium text-gray-900">
+            <label
+              htmlFor="colaborador"
+              className="block text-sm font-medium text-gray-900"
+            >
               Colaborador
             </label>
             <div className="mt-2 flex items-center rounded-md bg-white pl-3 outline-1 outline-gray-300 focus-within:outline-2">
@@ -175,7 +186,10 @@ export default function Home() {
             >
               <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div className="col-span-full">
-                  <label htmlFor="descricao" className="block text-sm font-medium text-gray-900">
+                  <label
+                    htmlFor="descricao"
+                    className="block text-sm font-medium text-gray-900"
+                  >
                     Descrição
                   </label>
                   <textarea
@@ -193,7 +207,10 @@ export default function Home() {
           </div>
 
           <div className="flex justify-end gap-x-6">
-            <button type="button" className="text-sm font-semibold text-gray-900">
+            <button
+              type="button"
+              className="text-sm font-semibold text-gray-900"
+            >
               Cancelar
             </button>
             <button
@@ -208,7 +225,9 @@ export default function Home() {
 
       <footer className="w-full max-w-xl mx-auto flex items-center justify-center gap-3 text-center text-xs text-gray-500 py-4">
         <Image src="/zap.svg" alt="Logo" height={60} width={60} />
-        <span>&copy; {new Date().getFullYear()} ZAP. Todos os direitos reservados.</span>
+        <span>
+          &copy; {new Date().getFullYear()} ZAP. Todos os direitos reservados.
+        </span>
       </footer>
     </div>
   );
