@@ -19,6 +19,8 @@ export default function Home() {
 
   const [isAvailable, setIsAvailable] = useState(true);
   const [descricao, setDescricao] = useState("");
+  const [dataAlternativa, setDataAlternativa] = useState("");
+  const [horarioAlternativo, setHorarioAlternativo] = useState("");
   const [colaborador, setColaborador] = useState<Colaborador | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -103,6 +105,8 @@ export default function Home() {
               obs: isAvailable ? "" : descricao,
               mec: mecnumber || "",
               resposta: isAvailable ? "Aceito" : "Recusado",
+              data_alternativa: isAvailable ? "" : dataAlternativa,
+              horario_alternativo: isAvailable ? "" : horarioAlternativo,
             };
 
             try {
@@ -121,6 +125,8 @@ export default function Home() {
                 alert("Resposta enviada com sucesso!");
                 setIsAvailable(true);
                 setDescricao("");
+                setDataAlternativa("");
+                setHorarioAlternativo("");
               } else {
                 alert("Erro ao enviar. Tente novamente.");
               }
@@ -181,7 +187,7 @@ export default function Home() {
 
             <div
               className={`overflow-hidden transition-all duration-500 ease-in-out mt-6 ${
-                isAvailable ? "max-h-0 opacity-0" : "max-h-[400px] opacity-100"
+                isAvailable ? "max-h-0 opacity-0" : "max-h-[500px] opacity-100"
               }`}
             >
               <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -201,6 +207,67 @@ export default function Home() {
                     value={descricao}
                     onChange={(e) => setDescricao(e.target.value)}
                   />
+                </div>
+
+                <div className="col-span-full sm:col-span-3">
+                  <label
+                    htmlFor="data-alternativa"
+                    className="block text-sm font-medium text-gray-900"
+                  >
+                    Data disponível
+                  </label>
+                  <input
+                    type="date"
+                    id="data-alternativa"
+                    name="data-alternativa"
+                    className="mt-2 block w-full rounded-sm bg-white px-3 py-2 text-base text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600"
+                    value={dataAlternativa}
+                    onChange={(e) => setDataAlternativa(e.target.value)}
+                  />
+                </div>
+
+                <div className="col-span-full sm:col-span-3">
+                  <label
+                    htmlFor="horario-alternativo"
+                    className="block text-sm font-medium text-gray-900"
+                  >
+                    Horário disponível
+                  </label>
+                  <select
+                    id="horario-alternativo"
+                    name="horario-alternativo"
+                    className="mt-2 block w-full rounded-sm bg-white px-3 py-2 text-base text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600"
+                    value={horarioAlternativo}
+                    onChange={(e) => setHorarioAlternativo(e.target.value)}
+                  >
+                    <option value="">Seleccione um horário</option>
+                    {[
+                      "08H00",
+                      "08H30",
+                      "09H00",
+                      "09H30",
+                      "10H00",
+                      "10H30",
+                      "11H00",
+                      "11H30",
+                      "12H00",
+                      "12H30",
+                      "13H00",
+                      "13H30",
+                      "14H00",
+                      "14H30",
+                      "15H00",
+                      "15H30",
+                      "16H00",
+                      "16H30",
+                      "17H00",
+                      "17H30",
+                    ].map((hora) => (
+                      <option key={hora} value={hora}>
+                        {hora}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
             </div>
