@@ -203,7 +203,7 @@ export default function Home() {
                     name="descricao"
                     rows={3}
                     className="mt-2 w-full rounded-sm bg-white px-3 py-1.5 text-base outline-1 outline-gray-300 focus:outline-2 placeholder-gray-400"
-                    placeholder="Motivo da indisponibilidade"
+                    placeholder="Motivo da indisponibilidade(Férias, Baixa médica, outro)"
                     value={descricao}
                     onChange={(e) => setDescricao(e.target.value)}
                   />
